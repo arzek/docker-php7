@@ -4,7 +4,8 @@ services:
       build:
           context: ./nginx
       ports:
-          - "8080:80"
+          - "80:80"
+          - "8080:8080"
       volumes:
           - ./app:/var/app
   fpm:
@@ -17,10 +18,3 @@ services:
       environment:
           - "DB_HOST=db"
           - "DB_DATABASE=laravel"
-  db:
-      image: mariadb
-      environment:
-          - MYSQL_ROOT_PASSWORD=root
-          - MYSQL_DATABASE=laravel
-      volumes:
-          - ./database:/var/lib/mysql
